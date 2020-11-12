@@ -30,6 +30,7 @@ namespace WeatherApp.ViewModels
             }
         }
 
+
         public string RawText {
             get {
                 if (CurrentTemp != null)
@@ -50,6 +51,8 @@ namespace WeatherApp.ViewModels
 
         #endregion
 
+
+        #region Methodes Commande
         public bool CanGetTemp(string obj)
         {
             return TemperatureService != null;
@@ -60,6 +63,7 @@ namespace WeatherApp.ViewModels
             if (TemperatureService == null) throw new NullReferenceException();
 
             _ = GetTempAsync();
+
         }
 
         private async Task GetTempAsync()
@@ -67,9 +71,14 @@ namespace WeatherApp.ViewModels
             CurrentTemp = await TemperatureService.GetTempAsync();
         }
 
+        #endregion
+
+
+        #region Methode utilitaire
         public void SetTemperatureService(ITemperatureService srv)
         {
             TemperatureService = srv;
         }
+        #endregion
     }
 }
