@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenWeatherAPI;
+using System;
 using System.Threading.Tasks;
 using WeatherApp.Commands;
 using WeatherApp.Models;
@@ -7,8 +8,13 @@ namespace WeatherApp.ViewModels
 {
     public class TemperatureViewModel : BaseViewModel
     {
+        #region Variables
         private TemperatureModel currentTemp;
 
+        #endregion
+
+
+        #region GETTER - SETTER
         public ITemperatureService TemperatureService { get; private set; }
 
         public DelegateCommand<string> GetTempCommand { get; set; }
@@ -32,11 +38,17 @@ namespace WeatherApp.ViewModels
                     return string.Empty;
             }
         }
+        #endregion
 
+
+        #region Constructors
         public TemperatureViewModel()
         {
             GetTempCommand = new DelegateCommand<string>(GetTemp, CanGetTemp);
+            
         }
+
+        #endregion
 
         public bool CanGetTemp(string obj)
         {

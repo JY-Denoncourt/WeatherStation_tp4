@@ -1,24 +1,26 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System.Windows;
 
 namespace WeatherApp
 {
-    static class AppConfiguration
+    public static class AppConfiguration
     {
-        static IConfiguration configuration;
+        private static IConfiguration configuration;
 
-        static void initConfig()
+        private static void initConfig()
         {
             var builder = new ConfigurationBuilder();
-            builder.AddJsonFile("appsettings.json",
-                optional: true,
-                reloadOnChange: true);
+            builder.AddJsonFile("appsettings.json", optional: true,reloadOnChange: true);
 
             builder.AddUserSecrets<MainWindow>();
 
             configuration = builder.Build();
+            string Apikey = configuration.GetSection("Secrets")["OWApiKey"];
+            //MessageBox.Show("key : " + Apikey);
+
         }
 
-        static string getValue(string key)
+        public static string getValue(string key)
         {
             //key possible { "Secret" 
             //                   ==> "OWApiKey" }
