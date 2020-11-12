@@ -28,7 +28,7 @@ namespace WeatherApp.Services
         {
             var weather = await owp.GetCurrentWeatherAsync();
 
-            //https://stackoverflow.com/questions/4964634/how-to-convert-long-type-datetime-to-datetime-with-correct-time-zone
+            //SRC = https://stackoverflow.com/questions/4964634/how-to-convert-long-type-datetime-to-datetime-with-correct-time-zone
             long unixDate = weather.DateTime;
             DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             LastTemp.DateTime = start.AddSeconds(unixDate).ToLocalTime();
