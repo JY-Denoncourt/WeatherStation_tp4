@@ -1,6 +1,7 @@
 ﻿using OpenWeatherAPI;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 using WeatherApp.Commands;
 using WeatherApp.Models;
 

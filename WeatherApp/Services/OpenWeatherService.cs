@@ -33,8 +33,7 @@ namespace WeatherApp.Services
             DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             LastTemp.DateTime = start.AddSeconds(unixDate).ToLocalTime();
 
-            /*DateTime dt = new DateTime(weather.DateTime);
-            LastTemp.DateTime = dt;*/
+            
             LastTemp.Temperature = weather.Main.Temperature;
            
 
